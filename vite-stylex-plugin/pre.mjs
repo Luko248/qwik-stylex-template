@@ -1,5 +1,4 @@
 import { transformSync } from "@babel/core";
-import { babelPluginTailwindToStylex } from "tailwind-to-stylex";
 
 export default function styleXVitePlugin() {
   return {
@@ -25,7 +24,6 @@ export default function styleXVitePlugin() {
         babelrc: false,
         plugins: [
           ["@babel/syntax-typescript", { isTSX: true }],
-          babelPluginTailwindToStylex(),
         ],
       });
 

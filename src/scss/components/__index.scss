@@ -1,0 +1,5 @@
+@use 'button' as *;
+
+@mixin create-components {
+    @include create-button;
+}

@@ -1,0 +1,7 @@
+﻿@use "./_index" as *;
+
+@mixin reset-bp-variables {
+    .dotvvm-bp-control {
+        // import BP CSS Variables and edit them here
+    }
+}

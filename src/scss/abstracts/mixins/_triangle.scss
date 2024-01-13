@@ -1,0 +1,36 @@
+@use '../variables/_index' as *;
+
+@mixin triangle-create($direction: down, $size: $gap-s, $color: $color-border) {
+    position: relative;
+
+    &:after {
+        position: absolute;
+        display: inline-block;
+        content: "";
+        width: 0;
+        height: 0;
+
+        @content;
+
+        @if $direction == down {
+            border-top: $size solid $color;
+            border-right: $size solid var(--color-trans);
+            border-left: $size solid var(--color-trans);
+        }
+        @else if $direction == up {
+            border-right: $size solid var(--color-trans);
+            border-bottom: $size solid $color;
+            border-left: $size solid var(--color-trans);
+        }
+        @else if $direction == right {
+            border-top: $size solid var(--color-trans);
+            border-bottom: $size solid var(--color-trans);
+            border-left: $size solid $color;
+        }
+        @else if $direction == left {
+            border-top: $size solid var(--color-trans);
+            border-right: $size solid $color;
+            border-bottom: $size solid var(--color-trans);
+        }
+    }
+}

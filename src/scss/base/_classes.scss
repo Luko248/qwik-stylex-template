@@ -1,0 +1,187 @@
+﻿@use '../abstracts/mixins/_index' as *;
+@use '../abstracts/variables/_index' as *;
+
+$alignTypes: ( 'sb': space-between, 'sa': space-around, 'c': center, 'fe': flex-end, 'fs': flex-start, 'st': stretch, );
+
+$gapTypes: ( 'xs': $gap-xs, 's': $gap-s, 'm': $gap-m, 'l': $gap-l, 'xl': $gap-xl, '2xl': $gap-2xl, '3xl': $gap-3xl, 'no': 0, );
+
+@mixin create-classes {
+    // display
+    .d {
+        &-b {
+            display: block;
+        }
+
+        &-ib {
+            display: inline-block;
+        }
+
+        &-f {
+            display: flex;
+        }
+
+        &-if {
+            display: inline-flex;
+        }
+
+        &-g {
+            display: grid;
+        }
+
+        &-ig {
+            display: inline-grid;
+        }
+
+        &-c {
+            display: contents;
+        }
+
+        &-n {
+            display: none;
+        }
+    }
+    // flex direction
+    .fd {
+        &-r {
+            flex-direction: row;
+        }
+
+        &-c {
+            flex-direction: column;
+        }
+    }
+    //paddings
+    .p {
+        @each $type, $value in $gapTypes {
+            &-#{$type} {
+                @include padding-set-all($value);
+            }
+
+            &-#{$type}-x {
+                @include padding-set-x($value);
+            }
+
+            &-#{$type}-y {
+                @include padding-set-y($value);
+            }
+        }
+    }
+    //margins
+    .m {
+        @each $type, $value in $gapTypes {
+            &-#{$type} {
+                @include margin-set-all($value);
+            }
+
+            &-#{$type}-x {
+                @include margin-set-x($value);
+            }
+
+            &-#{$type}-y {
+                @include margin-set-y($value);
+            }
+        }
+
+        &-la {
+            margin-inline-start: auto;
+        }
+
+        &-ra {
+            margin-inline-end: auto;
+        }
+
+        &-a {
+            margin-inline: auto;
+        }
+    }
+    //gaps
+    .gap {
+        gap: $gap-m !important;
+
+        @each $type, $value in $gapTypes {
+            &-#{$type} {
+                gap: #{$value} !important;
+            }
+        }
+    }
+    // justify content
+    .jc {
+        @each $type, $value in $alignTypes {
+            &-#{$type} {
+                justify-content: $value;
+            }
+        }
+    }
+    // align items
+    .ai {
+        @each $type, $value in $alignTypes {
+            &-#{$type} {
+                align-items: $value;
+            }
+        }
+    }
+
+    .text-truncate {
+        @include text-truncate(100%);
+    }
+
+    .col-span {
+        &--2 {
+            @include grid-col-span;
+
+            @include mq-responsive('desktop-s', max) {
+                @include grid-col-span(1);
+            }
+        }
+
+        &--3 {
+            @include grid-col-span(3);
+
+            @include mq-responsive('desktop-l', max) {
+                @include grid-col-span(2);
+            }
+
+            @include mq-responsive('desktop-s', max) {
+                @include grid-col-span(1);
+            }
+        }
+
+        &--4 {
+            @include grid-col-span(4);
+
+            @include mq-responsive('desktop-l', max) {
+                @include grid-col-span(2);
+            }
+
+            @include mq-responsive('desktop-s', max) {
+                @include grid-col-span(1);
+            }
+        }
+
+        &--5 {
+            @include grid-col-span(5);
+
+            @include mq-responsive('desktop-l', max) {
+                @include grid-col-span(2);
+            }
+
+            @include mq-responsive('desktop-s', max) {
+                @include grid-col-span(1);
+            }
+        }
+    }
+
+    .row-span {
+        &--2 {
+            @include grid-row-span;
+        }
+
+        &--3 {
+            @include grid-row-span(3);
+        }
+
+        &--4 {
+            @include grid-row-span(4);
+        }
+    }
+}

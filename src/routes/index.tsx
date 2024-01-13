@@ -1,134 +1,22 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { attrs, create } from "@stylexjs/stylex";
-import { container, ellipsis, heading, icon } from "~/commonStyles";
 
-import Counter from "~/components/starter/counter/counter";
-import Hero from "~/components/starter/hero/hero";
-import Infobox from "~/components/starter/infobox/infobox";
-import Starter from "~/components/starter/next-steps/next-steps";
-import { colors } from "../vars.stylex";
-
+import { color, gap, media } from "../vars.stylex";
 export default component$(() => {
   return (
-    <>
-      <Hero />
-      <Starter />
-
-      <div {...attrs(ellipsis.base)} role="presentation" />
-      <div {...attrs(ellipsis.base, ellipsis.purple)} role="presentation" />
-
-      <div {...attrs(container.base, container.center, container.xlSpacing)}>
-        <h3>
-          You can <span {...attrs(heading.hightlight)}>count</span>
-          <br /> on me
-        </h3>
-        <Counter />
-      </div>
-
-      <div {...attrs(container.base, container.flex)}>
-        <Infobox>
-          <div {...attrs(icon.base, icon.cli)} q:slot="title">
-            CLI Commands
-          </div>
-          <>
-            <p>
-              <code>npm run dev</code>
-              <br />
-              Starts the development server and watches for changes
-            </p>
-            <p>
-              <code>npm run preview</code>
-              <br />
-              Creates production build and starts a server to preview it
-            </p>
-            <p>
-              <code>npm run build</code>
-              <br />
-              Creates production build
-            </p>
-            <p>
-              <code>npm run qwik add</code>
-              <br />
-              Runs the qwik CLI to add integrations
-            </p>
-          </>
-        </Infobox>
-
-        <div>
-          <Infobox>
-            <div {...attrs(icon.base, icon.apps)} q:slot="title">
-              Example Apps
-            </div>
-            <p>
-              Have a look at the{" "}
-              <a {...attrs(styles.link)} href="/demo/flower">
-                Flower App
-              </a>{" "}
-              or the{" "}
-              <a {...attrs(styles.link)} href="/demo/todolist">
-                Todo App
-              </a>
-              .
-            </p>
-          </Infobox>
-
-          <Infobox>
-            <div {...attrs(icon.base, icon.community)} q:slot="title">
-              Community
-            </div>
-            <ul>
-              <li {...attrs(styles.li)}>
-                <span>Questions or just want to say hi? </span>
-                <a
-                  {...attrs(styles.link)}
-                  href="https://qwik.builder.io/chat"
-                  target="_blank"
-                >
-                  Chat on discord!
-                </a>
-              </li>
-              <li {...attrs(styles.li)}>
-                <span>Follow </span>
-                <a
-                  {...attrs(styles.link)}
-                  href="https://twitter.com/QwikDev"
-                  target="_blank"
-                >
-                  @QwikDev
-                </a>
-                <span> on Twitter</span>
-              </li>
-              <li {...attrs(styles.li)}>
-                <span>Open issues and contribute on </span>
-                <a
-                  {...attrs(styles.link)}
-                  href="https://github.com/BuilderIO/qwik"
-                  target="_blank"
-                >
-                  GitHub
-                </a>
-              </li>
-              <li {...attrs(styles.li)}>
-                <span>Watch </span>
-                <a
-                  {...attrs(styles.link)}
-                  href="https://qwik.builder.io/media/"
-                  target="_blank"
-                >
-                  Presentations, Podcasts, Videos, etc.
-                </a>
-              </li>
-            </ul>
-          </Infobox>
-        </div>
-      </div>
-    </>
+    <section {...attrs(styles.section)}>
+      <h1 {...attrs(styles.heading)}>Qwik + Vite + StyleX + SCSS template</h1>
+      <p {...attrs(styles.desc)}>
+        This is a template for creating a new Qwik website using Vite, StyleX
+        and SCSS.
+      </p>
+    </section>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "Qwik + Vite + StyleX + SCSS template",
   meta: [
     {
       name: "description",
@@ -138,11 +26,23 @@ export const head: DocumentHead = {
 };
 
 const styles = create({
-  link: {
-    textDecoration: { default: "none", ":hover": "underline" },
-    color: colors.lightBlue,
+  section: {
+    paddingBlock: "8svb",
   },
-  li: {
-    lineHeight: 2.5,
+  heading: {
+    color: color.textDark,
+    fontSize: gap.xxl,
+    backgroundColor: color.black,
+    textAlign: "center",
+    paddingBlock: gap.xxxl,
+    textTransform: "uppercase",
+    letterSpacing: gap.s,
   },
+  desc: {
+    color: color.textLight,
+    marginInline: "auto",
+    inlineSize: `min(calc(${media.widthDesktopL} - ${gap.xl}), 100%)`,
+    fontSize: gap.xl,
+    textAlign: "center",
+  }
 });

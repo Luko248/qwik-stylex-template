@@ -6,10 +6,10 @@ import {
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import * as stylex from "@stylexjs/stylex";
+import "./scss/index.scss";
 
-import "./global.css";
 import "virtual:stylex.css";
-import { colors } from "./vars.stylex";
+import { color } from "./vars.stylex";
 
 export default component$(() => {
   /**
@@ -37,9 +37,8 @@ export default component$(() => {
 const styles = stylex.create({
   body: {
     margin: 0,
-    padding: 0,
-    backgroundColor: colors.darkBackground,
-    color: colors.darkText,
-    overflowX: "hidden",
+    minBlockSize: "100svb",
+    color: color.textLight,
+    overflowX: "clip",
   },
 });

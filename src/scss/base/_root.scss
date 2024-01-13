@@ -1,0 +1,9 @@
+﻿@use "../abstracts/variables/_index" as *;
+
+@mixin create-root {
+    :root {
+        @include generate-colors;
+        @include generate-fonts;
+        @include generate-sizes;
+    }
+}

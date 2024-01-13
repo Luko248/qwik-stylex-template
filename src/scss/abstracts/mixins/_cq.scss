@@ -1,0 +1,13 @@
+@mixin cq($type: max, $size) {
+    @if $type == max {
+        @container (inline-size <= #{$size}) {
+            @content;
+        }
+    }
+
+    @else {
+        @container (inline-size > #{$size}) {
+            @content;
+        }
+    }
+}
