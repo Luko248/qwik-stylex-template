@@ -1,8 +1,11 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { attrs, create } from "@stylexjs/stylex";
+import {create, attrs} from "@stylexjs/stylex";
+
 
 import { color, gap, media } from "../vars.stylex";
+import { Button } from "~/components/button/button";
+import { ButtonVariant, ButtonSize } from "~/components/button/button.types";
 export default component$(() => {
   return (
     <section {...attrs(styles.section)}>
@@ -11,6 +14,7 @@ export default component$(() => {
         This is a template for creating a new Qwik website using Vite, StyleX
         and SCSS.
       </p>
+      <Button variant={ButtonVariant.Primary} size={ButtonSize.Medium}>Button</Button>
     </section>
   );
 });
